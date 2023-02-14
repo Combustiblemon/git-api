@@ -1,11 +1,10 @@
-[development]
+[debug]
 port = 8000
 workers = 2
-log = "normal"
+log_level = "normal"
 
 
-[production]
-address = "localhost"
+[release]
 port = 8000
 workers = 2
-log = "normal"
+log_level = "normal"
