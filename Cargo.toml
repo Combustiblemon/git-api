@@ -7,6 +7,7 @@ edition = "2021"
 
 [dependencies]
 dotenv = "0.15.0"
+load-dotenv = "0.1.2"
 reqwest = "0.11.14"
 rocket = "0.5.0-rc.2"
 serde = "1.0.152"

@@ -1,4 +1,5 @@
 use dotenv::dotenv;
+use load_dotenv::load_dotenv;
 use reqwest::Client;
 
 use serde::Deserialize;
@@ -6,6 +7,8 @@ use serde::Serialize;
 use serde_json::json;
 
 pub type ResponseType = Vec<Root>;
+
+load_dotenv!();
 
 #[derive(Default, Debug, Clone, PartialEq, Serialize, Deserialize)]
 #[serde(rename_all = "camelCase")]
@@ -104,7 +107,7 @@ static QUERY2: &str = "query {viewer {      pullRequests(last: 100, states: OPEN
 #[get("/")]
 async fn index() -> Result<String, String> {
     let client = get_client();
-    let pat = std::env::var("GITHUB_PAT").unwrap();
+    let pat = env!("GITHUB_PAT");
     let res = client
         .post("https://api.github.com/graphql")
         .header(reqwest::header::AUTHORIZATION, format!("Bearer {pat}"))
